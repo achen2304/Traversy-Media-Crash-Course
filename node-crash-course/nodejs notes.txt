@@ -1,0 +1,17 @@
+node -v 
+npm -v
+npm init -y --> creates.json file
+node <filename> --> runs file 
+
+module.exports = <function>; --> prepares function to be exported to different files
+    {<<function1>, <data1>} --> prepares to export object of functions/data
+const <varName> = require('directory'); --> imports function as varName
+    {<var1>, <var2>} =  require('directory'); --> imports the functions
+
+----------ES modules/Common JS---------
+add <"type": "module",> to package.json file (below "main")
+export <exportedName> --> posts/db exports data out
+    { <exportedName> }
+    default <exportedName>
+import { <exportedName> } from "driectory.js" 
+    import <exportedName> from ... --> if using default (usually are)
