@@ -8,6 +8,14 @@ module.exports = <function>; --> prepares function to be exported to different f
 const <varName> = require('directory'); --> imports function as varName
     {<var1>, <var2>} =  require('directory'); --> imports the functions
 
+.gitignore --> file to prevent folders/files from being pushed to github
+.env --> file for passwords 
+    process.env.<name> --> calls env file for the object
+
+nodemon --> autostart server
+npm install -D nodemon --> installs with dependencies
+    "dev": "nodemon --env-file=.env server.js" --> runs nodeman with env file in script
+
 ----------ES modules/Common JS---------
 add <"type": "module",> to package.json file (below "main")
 export <exportedName> --> posts/db exports data out
@@ -15,3 +23,20 @@ export <exportedName> --> posts/db exports data out
     default <exportedName>
 import { <exportedName> } from "driectory.js" 
     import <exportedName> from ... --> if using default (usually are)
+
+---------HTTP module-------------
+import http from "http";
+const server = http.createServer((req, res) => {
+    res.write()
+    <res commands>
+})
+
+res methods:
+    .setHeader
+    .statusCode
+    .write
+    .end
+
+req methods:
+    .url
+    .method 
