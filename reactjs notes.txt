@@ -1,0 +1,2 @@
+npm init -y --> creates.json file
+npm i express 

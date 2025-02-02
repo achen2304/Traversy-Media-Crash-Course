@@ -16,6 +16,12 @@ nodemon --> autostart server
 npm install -D nodemon --> installs with dependencies
     "dev": "nodemon --env-file=.env server.js" --> runs nodeman with env file in script
 
+--------Basic client codes-------------
+200 = success
+300 = redirect
+404 = client error
+500 = server error
+
 ----------ES modules/Common JS---------
 add <"type": "module",> to package.json file (below "main")
 export <exportedName> --> posts/db exports data out
