@@ -1,3 +1,4 @@
+import './moviecard.css';
 function MovieCard({ movie }) {
   function onFavoriteClick() {
     alert('clicked');

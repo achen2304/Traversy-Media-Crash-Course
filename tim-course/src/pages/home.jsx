@@ -1,6 +1,6 @@
 import MovieCard from '../components/moviecard';
 import { useState } from 'react';
-
+import './Home.css';
 function Home() {
   const [search, setSearch] = useState('');
 
@@ -34,6 +34,7 @@ function Home() {
   const handleSearch = (e) => {
     e.preventDefault(); //prevents the page from refreshing & clearing search bar
     alert(`Searching for ${search}`);
+    setSearch(''); //clears the search bar after alert
   };
 
   return (
@@ -52,11 +53,10 @@ function Home() {
       </form>
       <div className="movies-grid">
         {movies.map(
-          (
-            movie //maps thru movies and displays them
-          ) => (
+          (movie) => (
+            // movie.title.toLowerCase().includes(search.toLowerCase()) && ( only displays movies that match the first part of the search
             <MovieCard movie={movie} key={movie.id} />
-          )
+          ) //maps thru movies and displays them
         )}
       </div>
     </div>
