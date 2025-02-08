@@ -1,35 +1,29 @@
 import MovieCard from '../components/moviecard';
-import { useState } from 'react';
+import { useState, useEffect, use } from 'react';
 import './Home.css';
+import { searchMovies, getPopularMovies } from '../../services/api';
+
 function Home() {
   const [search, setSearch] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [error, seterror] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const movies = [
-    {
-      id: 1,
-      title: 'The Godfather',
-      release_date: 'March 24, 1972',
-      url: 'https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg',
-    },
-    {
-      id: 2,
-      title: 'The Shawshank Redemption',
-      release_date: 'September 23, 1994',
-      url: 'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-    {
-      id: 3,
-      title: 'The Dark Knight',
-      release_date: 'July 18, 2008',
-      url: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg',
-    },
-    {
-      id: 4,
-      title: 'Forrest Gump',
-      release_date: 'July 6, 1994',
-      url: 'https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg',
-    },
-  ];
+  // useEffect(() => {}, []); //runs once when the component mounts & checks if array changes to run again
+  useEffect(() => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPopularMovies();
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault(); //prevents the page from refreshing & clearing search bar
